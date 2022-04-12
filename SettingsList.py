@@ -2751,6 +2751,16 @@ setting_infos = [
         ''',
         shared         = True,
     ),
+    Checkbutton(
+        name           = 'start_with_random_item',
+        gui_text       = 'Start with a Random Item',
+        gui_tooltip    = '''\
+            Start the game with a random piece of equipment, key item, or upgrade. 
+            \n
+            NOTE: This will override any other starting item settings!
+        ''',
+        shared         = True,
+    ),
     Scale(
         name           = 'starting_hearts',
         gui_text       = "Starting Hearts",

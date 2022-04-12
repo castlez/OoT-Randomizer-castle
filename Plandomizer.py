@@ -1027,6 +1027,19 @@ class Distribution(object):
 
         self.__dict__.update(update_dict)
 
+        # handle random starting item
+        if self.settings.start_with_random_item:
+            start_item_type = random.choice(["iventory", "equipment"])
+            if start_item_type == "inventory":
+                starting_item = random.choice(list(StartingItems.inventory))
+                self.settings.starting_items = [StartingItems.inventory[starting_item].settingname]
+                self.settings.starting_equipment = []
+            if start_item_type == "equipment":
+                starting_equipment = random.choice(list(StartingItems.equipment))
+                self.settings.starting_equipment = [StartingItems.equipment[starting_equipment].settingname]
+                self.settings.starting_items = []
+            self.settings.starting_songs = []
+
         # Init we have to do every time we retry
         self.reset()
 

@@ -308,6 +308,7 @@
           "settings": [
             "start_with_consumables",
             "start_with_rupees",
+            "start_with_random_item",
             "starting_hearts"
           ]
         }

@@ -11,6 +11,8 @@
 /__pycache__
 ARCHIVE.bin
 
+SETTINGS_TEST.json
+
 **/.DS_Store
 
 #Directory generated when we create wad file
