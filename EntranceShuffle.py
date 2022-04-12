@@ -345,7 +345,7 @@ entrance_shuffle_table = [
 priority_entrance_table = {
     'Bolero': (['DMC Central Local'], ['OwlDrop', 'WarpSong']),
     'Nocturne': (['Graveyard Warp Pad Region'], ['OwlDrop', 'Spawn', 'WarpSong']),
-    'Requiem': (['Desert Colossus', 'Desert Colossus From Spirit Lobby'], ['OwlDrop', 'Spawn', 'WarpSong']),
+    'Requiem': (['Desert Colossus', 'Desert Colossus From Spirit Lobby'], ['OwlDrop', 'Spawn', 'WarpSong'])
 }
 
 
@@ -399,6 +399,10 @@ def shuffle_random_entrances(worlds):
                 one_way_priorities['Nocturne'] = priority_entrance_table['Nocturne']
                 if not worlds[0].settings.shuffle_dungeon_entrances and not worlds[0].settings.shuffle_overworld_entrances:
                     one_way_priorities['Requiem'] = priority_entrance_table['Requiem']
+            elif worlds[0].settings.tot_reachable:
+                # make sure one of the songs goes to temple of time
+                # 'Prelude': (['Temple of Time'],['WarpSong'])
+                one_way_priorities['Prelude'] = (['Temple of Time'],['WarpSong'])
 
         if worlds[0].settings.shuffle_dungeon_entrances:
             entrance_pools['Dungeon'] = world.get_shufflable_entrances(type='Dungeon', only_primary=True)

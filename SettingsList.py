@@ -2758,6 +2758,7 @@ setting_infos = [
             Start the game with a random piece of equipment, key item, or upgrade. 
             \n
             NOTE: This will override any other starting item settings!
+            Added by Castle
         ''',
         shared         = True,
     ),
@@ -3142,6 +3143,25 @@ setting_infos = [
         gui_params     = {
             'randomize_key': 'randomize_settings',
         },
+        disable        = {
+            True  : {'settings' : []},
+            False : {'settings' : ['tot_reachable']}
+        },
+    ),
+    Checkbutton(
+        name           = 'tot_reachable',
+        gui_text       = 'Temple of Time Reachable',
+        gui_tooltip    = '''\
+            Ensure that one of the warp songs still goes to Temple of Time.
+            Can be useful for no logic to increase the chances that both 
+            ages are available.
+            Added by Castle
+        ''',
+        default        = False,
+        shared         = True,
+        gui_params     = {
+            "hide_when_disabled": True,
+        }, 
     ),
     Checkbutton(
         name           = 'spawn_positions',

@@ -192,6 +192,7 @@
             "decouple_entrances",
             "owl_drops",
             "warp_songs",
+            "tot_reachable",
             "spawn_positions"
           ]
         },

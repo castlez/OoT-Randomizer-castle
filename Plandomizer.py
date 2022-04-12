@@ -1029,7 +1029,7 @@ class Distribution(object):
 
         # handle random starting item
         if self.settings.start_with_random_item:
-            start_item_type = random.choice(["iventory", "equipment"])
+            start_item_type = random.choice(["inventory", "equipment"])
             if start_item_type == "inventory":
                 starting_item = random.choice(list(StartingItems.inventory))
                 self.settings.starting_items = [StartingItems.inventory[starting_item].settingname]
