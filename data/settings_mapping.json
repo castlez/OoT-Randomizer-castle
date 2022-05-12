@@ -13,6 +13,7 @@
           "settings": [
             "rom",
             "output_dir",
+            "output_name",
             "enable_distribution_file",
             "enable_cosmetic_file",
             "distribution_file",

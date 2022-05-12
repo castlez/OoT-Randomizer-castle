@@ -372,12 +372,14 @@ def patch_and_output(settings, window, spoiler, rom):
             # If we aren't compressing the ROM, we're done with this world.
             if not compressed_rom:
                 continue
-
             compressed_filename = f"{output_filename_base}{player_filename_suffix}.z64"
             compressed_path = os.path.join(output_dir, compressed_filename)
             log_and_update_window(window, f"Compressing ROM: {compressed_filename}")
             compress_rom(uncompressed_path, compressed_path, window, not settings.create_uncompressed_rom)
             logger.info("Created compressed ROM at: %s" % compressed_path)
+
+            logger.info("base name: %s" % output_filename_base)
+            logger.info("player name: %s" % player_filename_suffix)
 
             # If we aren't generating a WAD, we're done with this world.
             if not settings.create_wad_file:

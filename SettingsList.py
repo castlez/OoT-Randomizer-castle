@@ -1827,6 +1827,7 @@ setting_infos = [
             "web:hide_when_disabled" : True,
         }),
     Setting_Info('output_dir',        str, "Output Directory", "Directoryinput", False, {}),
+    Setting_Info('output_name',       str, "File Name Pattern (Optional)", "Textinput", False, {}),
     Setting_Info('output_file',       str, None, None, False, {}),
     Setting_Info('seed',              str, None, None, False, {}),
     Setting_Info('patch_file',        str, "Patch File", "Fileinput", False, {},
