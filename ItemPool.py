@@ -222,8 +222,8 @@ def generate_itempool(world):
 
     # make sure that there are enough gold skulltulas for bridge/ganon boss key/lacs
     world.available_tokens = placed_items_count.get("Gold Skulltula Token", 0) \
-                           + pool.count("Gold Skulltula Token") \
-                           + world.distribution.starting_items.get("Gold Skulltula Token", 0)
+                        + pool.count("Gold Skulltula Token") \
+                        + world.distribution.starting_items.get("Gold Skulltula Token", 0)
     if world.max_progressions["Gold Skulltula Token"] > world.available_tokens:
         raise ValueError(f"Not enough available Gold Skulltula Tokens to meet requirements. Available: {world.available_tokens}, Required: {world.max_progressions['Gold Skulltula Token']}.")
 
@@ -292,8 +292,13 @@ def get_pool_core(world):
         # Gold Skulltula Tokens
         elif location.vanilla_item == 'Gold Skulltula Token':
             shuffle_item = (world.settings.tokensanity == 'all'
+                            or (world.settings.tokensanity == 'shuffle')
                             or (world.settings.tokensanity == 'dungeons' and location.dungeon)
                             or (world.settings.tokensanity == 'overworld' and not location.dungeon))
+            
+            # if shuffle is on, we need to replace the token with junk
+            if world.settings.tokensanity == 'shuffle':
+                item = get_junk_item()[0]
 
         # Shops
         elif location.type == "Shop":

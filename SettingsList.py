@@ -3315,6 +3315,7 @@ setting_infos = [
             'dungeons':  'Dungeons Only',
             'overworld': 'Overworld Only',
             'all':       'All Tokens',
+            'shuffle':   'Shuffle All, No Tokens'
             },
         gui_tooltip    = '''\
             Token reward from Gold Skulltulas are
@@ -3332,6 +3333,14 @@ setting_infos = [
 
             'All Tokens': Effectively adds 100
             new locations for items to appear.
+
+            'Shuffle All, No Tokens' shuffles all
+            skulltula rewards, but does NOT place
+            tokens in the pool. This means we will
+            still get random items from skulltulas,
+            but you will never get a token instead
+            of an item or junk.
+            Added by Castle
         ''',
         shared         = True,
         gui_params     = {
