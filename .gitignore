@@ -1,14 +1,14 @@
 .sw*
-/.vs
-/.vscode
-/.idea
+.vs
+.vscode
+.idea
 /ASM/build/bin
 /Output
 /build
 /dist
 /Logs
 /testlogs
-/__pycache__
+__pycache__
 ARCHIVE.bin
 
 SETTINGS_TEST.json
@@ -28,6 +28,11 @@ common-key.bin
 *.spec
 .*.sw*
 *.wad
+
+data/Models/Adult/*.zobj
+data/Models/Adult/Pieces
+data/Models/Child/*.zobj
+data/Models/Child/Pieces
 
 tests/Output
 !tests/*.sav
