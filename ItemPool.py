@@ -375,9 +375,8 @@ def generate_itempool(world):
     world.available_tokens = placed_items_count.get("Gold Skulltula Token", 0) \
                            + pool.count("Gold Skulltula Token") \
                            + world.distribution.get_starting_item("Gold Skulltula Token")
-    if world.max_progressions["Gold Skulltula Token"] > world.available_tokens:
-        # raise ValueError(f"Not enough available Gold Skulltula Tokens to meet requirements. Available: {world.available_tokens}, Required: {world.max_progressions['Gold Skulltula Token']}.")
-        pass
+    if world.max_progressions["Gold Skulltula Token"] > world.available_tokens and world.settings.tokensanity != "shuffle":
+        raise ValueError(f"Not enough available Gold Skulltula Tokens to meet requirements. Available: {world.available_tokens}, Required: {world.max_progressions['Gold Skulltula Token']}.")
 def get_pool_core(world):
     pool = []
     placed_items = {}
@@ -474,11 +473,6 @@ def get_pool_core(world):
             # if shuffle is on, we need to replace the token with junk
             if world.settings.tokensanity == 'shuffle':
                 item = get_junk_item()[0]
-
-                # # also try to add the skull house checks to exclusions
-                # tokens = [50, 40, 30, 20, 10]
-                # for t in tokens:
-                #     world.settings.disabled_locations.append(f'Kak {t} Gold Skulltula Reward')
 
         # Shops
         elif location.type == "Shop":
