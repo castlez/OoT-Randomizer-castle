@@ -375,9 +375,8 @@ def generate_itempool(world):
     world.available_tokens = placed_items_count.get("Gold Skulltula Token", 0) \
                            + pool.count("Gold Skulltula Token") \
                            + world.distribution.get_starting_item("Gold Skulltula Token")
-    if world.max_progressions["Gold Skulltula Token"] > world.available_tokens:
+    if world.max_progressions["Gold Skulltula Token"] > world.available_tokens and world.settings.tokensanity != "shuffle":
         raise ValueError(f"Not enough available Gold Skulltula Tokens to meet requirements. Available: {world.available_tokens}, Required: {world.max_progressions['Gold Skulltula Token']}.")
-
 def get_pool_core(world):
     pool = []
     placed_items = {}
@@ -468,8 +467,12 @@ def get_pool_core(world):
         # Gold Skulltula Tokens
         elif location.vanilla_item == 'Gold Skulltula Token':
             shuffle_item = (world.settings.tokensanity == 'all'
+                            or (world.settings.tokensanity == 'shuffle' and location.dungeon)
                             or (world.settings.tokensanity == 'dungeons' and location.dungeon)
                             or (world.settings.tokensanity == 'overworld' and not location.dungeon))
+            # if shuffle is on, we need to replace the token with junk
+            if world.settings.tokensanity == 'shuffle':
+                item = get_junk_item()[0]
 
         # Shops
         elif location.type == "Shop":
@@ -708,7 +711,7 @@ def get_pool_core(world):
             shuffle_item = True
 
         # Now, handle the item as necessary.
-        if shuffle_item:
+        if shuffle_item or "Triforce" in item:
             pool.append(item)
         elif shuffle_item is not None:
             placed_items[location.name] = item
