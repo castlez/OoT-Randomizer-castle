@@ -468,8 +468,12 @@ def get_pool_core(world):
         # Gold Skulltula Tokens
         elif location.vanilla_item == 'Gold Skulltula Token':
             shuffle_item = (world.settings.tokensanity == 'all'
+                            or (world.settings.tokensanity == 'shuffle' and location.dungeon)
                             or (world.settings.tokensanity == 'dungeons' and location.dungeon)
                             or (world.settings.tokensanity == 'overworld' and not location.dungeon))
+            # if shuffle is on, we need to replace the token with junk
+            if world.settings.tokensanity == 'shuffle':
+                item = get_junk_item()[0]
 
         # Shops
         elif location.type == "Shop":
