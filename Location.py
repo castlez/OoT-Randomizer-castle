@@ -95,7 +95,9 @@ class Location(object):
 
 
     def can_fill_fast(self, item, manual=False):
-        return (self.parent_region.can_fill(item, manual) and self.item_rule(self, item))
+        if self.name != "Ganon":
+            return (self.parent_region.can_fill(item, manual) and self.item_rule(self, item))
+        return True
 
 
     def is_disabled(self):
